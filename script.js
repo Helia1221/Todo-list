@@ -8,10 +8,8 @@ activeData.forEach(element => {
         <a class="btn-delete text-dark" href=""><i class="bi fs-5 bi-x-circle-fill"></i></a>
     </div>
     </li>`
-    document.querySelector(outputClass).insertAdjacentHTML('beforeend', markup);
-});
+    document.querySelector(outputClass).insertAdjacentHTML('beforeend', markup);});
 }
-uploadData('tasks', '.list');
 
 function addItem(markup, outputClass) {
 document.querySelector(outputClass).insertAdjacentHTML('beforeend', markup)
@@ -48,3 +46,14 @@ addItemToLS(`${input.value}`, 'tasks')
 addItem(li, '.list');
 clearInput(input)
 })
+
+//function deleteItemFromLS() {}
+
+document.querySelector('.btn-delete').addEventListener('click', function(event) {
+    event.preventDefault();
+    console.log(event.target);
+    //deleteItemFromLS();
+    //deleteItem();
+})
+
+uploadData('tasks', '.list');
