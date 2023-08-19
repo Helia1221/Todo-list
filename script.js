@@ -1,16 +1,18 @@
 function uploadData(source, outputClass) {
     document.querySelector(outputClass).innerHTML = ''
-let activeData = JSON.parse(localStorage.getItem(source)) || [];
-activeData.forEach(element => {
-    let markup = `<li id="${element.id}" class="list-group-item d-flex justify-content-between">
-    <span class="li-span${element.important ? ' is-important' : ''}${element.done ? ' is-done' : ''}">${element.name}</span>
-    <div class="bth-actions">
-        <a class="btn-important text-dark" href=""><i class="bi fs-5 bi-exclamation-circle-fill"></i></a>
-        <a class="btn-delete text-dark" href=""><i class="bi fs-5 bi-x-circle-fill"></i></a>
-    </div>
-    </li>`
-    document.querySelector(outputClass).insertAdjacentHTML('beforeend', markup);
+    const searchInput = document.querySelector('.search-form');
+    let activeData = JSON.parse(localStorage.getItem(source)) || [];
+    activeData.forEach(element => {
+        let markup = `<li id="${element.id}" class="list-group-item d-flex justify-content-between">
+        <span class="li-span${element.important ? ' is-important' : ''}${element.done ? ' is-done' : ''}">${element.name}</span>
+        <div class="bth-actions">
+            <a class="btn-important text-dark" href=""><i class="bi fs-5 bi-exclamation-circle-fill"></i></a>
+            <a class="btn-delete text-dark" href=""><i class="bi fs-5 bi-x-circle-fill"></i></a>
+        </div>
+        </li>`
+        document.querySelector(outputClass).insertAdjacentHTML('beforeend', markup);
 });
+clearInput(searchInput);
 setDeleteListener('.btn-delete');
 setImportantListener('.btn-important');
 setDoneListener('.li-span');
@@ -233,7 +235,6 @@ function deleteItemFromLS(itemId, source) {
 
 document.querySelector('.btn-add').addEventListener('click', function(event) {
 const input = event.target.parentElement.querySelector('input');
-const searchInput = document.querySelector('.search-form');
 if (input.value === '') {
     return;
 }
@@ -246,7 +247,6 @@ if (input.value === '') {
 </li>`*/
 addItemToLS(`${input.value}`, 'tasks');
 clearInput(input);
-clearInput(searchInput);
 dropFilter();
 uploadData('tasks', '.list');
 })
