@@ -234,6 +234,9 @@ function deleteItemFromLS(itemId, source) {
 document.querySelector('.btn-add').addEventListener('click', function(event) {
 const input = event.target.parentElement.querySelector('input');
 const searchInput = document.querySelector('.search-form');
+if (input.value === '') {
+    return;
+}
 /*const li = `<li id="${globalIdCounter('tasks')}" class="list-group-item d-flex justify-content-between">
 <span>${input.value}</span>
 <div class="bth-actions">
