@@ -21,12 +21,39 @@
             background-color: rgba(255, 255, 255, 0.8);
         }
         .btn-important:hover {
-            color: goldenrod !important;
+            color: orange !important;
         }
         .btn-delete:hover {
             color: red !important;
         }
-        .bold-text {
+        .is-important {
+            color: rgb(207, 135, 0) !important;
+            font-weight: bold !important;
+        }
+        ul .is-important:before {
+            content: "[FOCUSED] " !important;
+            color: rgb(207, 135, 0) !important;
+            font-weight: bold !important;
+        }
+        li span:hover {
+            cursor: pointer !important;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .hidden-by-search {
+            display: none !important;
+        }
+        .is-done {
+            color: rgb(12, 148, 57) !important;
+            font-weight: bold !important;
+        }
+        .is-done:after {
+            content: " [DONE]" !important;
+            color: green !important;
+            font-weight: bold !important;
+        }
+        .li-span {
             font-weight: bold !important;
         }
     </style>
@@ -36,24 +63,24 @@
         <div class="d-flex justify-content-center">
             <div class="w-50 wrapper border rounded p-4 d-flex flex-column row-gap-3">
                 <div class="header d-flex justify-content-between">
-                    <h1>Todo app</h1>
-                    <div class="info d-flex column-gap-2 align-items-center">
+                    <h1 class="display-5">Todo app</h1>
+                    <div class="info d-flex flex-column column-gap-2 align-items-end">
                         <div class="lead fw-bold">
                             <span id="active">0</span>
-                            <label class="text-danger">active</label>
+                            <label class="text-danger">Total</label>
                         </div>
                         <div class="lead fw-bold">
                             <span id="done">0</span>
-                            <label class="text-success">done</label>
+                            <label class="text-success">Done</label>
                         </div>
                     </div>
                 </div>
                 <div class="filter d-flex column-gap-5">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="search-form form-control" placeholder="Search">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary">Left</button>
-                        <button type="button" class="btn btn-outline-dark">Middle</button>
-                        <button type="button" class="btn btn-outline-dark">Right</button>
+                        <button type="button" class="btn btn-primary">All</button>
+                        <button type="button" class="btn btn-outline-dark">Focused</button>
+                        <button type="button" class="btn btn-outline-dark">Done</button>
                     </div>
                 </div>
                 <ul class="list list-group list-group-flush">
